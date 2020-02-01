@@ -1,7 +1,12 @@
 <template>
   <div class="container">
     <div>
-      <logo />
+      <b-img-lazy
+        id="chara"
+        class="fixed-bottom"
+        src="~/assets/images/top_chara.png"
+        fluid
+      />
       <h1 class="title">
         cappuccino
       </h1>
@@ -31,12 +36,8 @@
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-
 export default {
-  components: {
-    Logo
-  }
+  components: {}
 }
 </script>
 
@@ -70,5 +71,9 @@ export default {
 
 .links {
   padding-top: 15px;
+}
+
+#chara {
+  z-index: -1;
 }
 </style>
