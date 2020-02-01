@@ -10,8 +10,10 @@ export const mutations = {
 
 export const actions = {
   nuxtServerInit({ commit }, { req }) {
-    if (req.session.passport && req.session.passport.user) {
-      commit('setUser', req.session.passport.user)
+    if (req.session) {
+      if (req.session.passport && req.session.passport.user) {
+        commit('setUser', req.session.passport.user)
+      }
     }
   }
 }
