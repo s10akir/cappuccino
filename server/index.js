@@ -1,10 +1,13 @@
 const express = require('express')
 const consola = require('consola')
 const { Nuxt, Builder } = require('nuxt')
+const session = require('express-session')
 const app = express()
 
-// Import and Set Nuxt.js options
 const config = require('../nuxt.config.js')
+const authRouter = require('./routes/auth')
+
+// Import and Set Nuxt.js options
 config.dev = process.env.NODE_ENV !== 'production'
 
 async function start() {
@@ -20,6 +23,15 @@ async function start() {
   } else {
     await nuxt.ready()
   }
+
+  app.use(
+    session({
+      resave: false,
+      saveUninitialized: false,
+      secret: process.env.SESSION_SECRET || 'secret'
+    })
+  )
+  app.use('/auth', authRouter)
 
   // Give nuxt middleware to express
   app.use(nuxt.render)

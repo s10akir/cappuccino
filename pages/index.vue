@@ -9,15 +9,19 @@
         NO COFFEE NO LIFE.
       </h2>
       <div class="links">
-        <a href="https://nuxtjs.org/" target="_blank" class="button--green">
-          Documentation
+        <a
+          v-if="!$store.state.authUser"
+          href="/auth/slack"
+          class="button--green"
+        >
+          Login
         </a>
         <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
+          v-if="$store.state.authUser"
+          href="/auth/logout"
+          class="button--green"
         >
-          GitHub
+          Logout
         </a>
       </div>
     </div>
