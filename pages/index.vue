@@ -12,7 +12,6 @@
         <a
           v-if="!$store.state.authUser"
           href="/auth/slack"
-          target="_blank"
           class="button--green"
         >
           Login
@@ -20,7 +19,6 @@
         <a
           v-if="$store.state.authUser"
           href="/auth/logout"
-          target="_blank"
           class="button--green"
         >
           Logout
