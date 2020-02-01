@@ -9,11 +9,23 @@
         NO COFFEE NO LIFE.
       </h2>
       <div class="links">
-        <a href="/auth/slack" target="_blank" class="button--green">
+        <a
+          v-if="!$store.state.authUser"
+          href="/auth/slack"
+          target="_blank"
+          class="button--green"
+        >
           Login
         </a>
+        <a
+          v-if="$store.state.authUser"
+          href="/auth/logout"
+          target="_blank"
+          class="button--green"
+        >
+          Logout
+        </a>
       </div>
-      <h2 v-if="$store.state.authUser">Login Successful!</h2>
     </div>
   </div>
 </template>
