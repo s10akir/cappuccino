@@ -9,20 +9,22 @@
         NO COFFEE NO LIFE.
       </h2>
       <div class="links">
-        <a
+        <b-button
           v-if="!$store.state.authUser"
+          variant="outline-success"
           href="/auth/slack"
-          class="button--green"
+          size="lg"
         >
           Login
-        </a>
-        <a
+        </b-button>
+        <b-button
           v-if="$store.state.authUser"
+          variant="outline-danger"
           href="/auth/logout"
-          class="button--green"
+          size="lg"
         >
           Logout
-        </a>
+        </b-button>
       </div>
     </div>
   </div>
