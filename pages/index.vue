@@ -1,5 +1,5 @@
 <template>
-  <div id="index" class="app">
+  <div id="index" :class="{ 'center-vertical': large }" class="app">
     <b-container class="justify-content-center text-center">
       <h1 class="title">cappuccino</h1>
       <h2 class="subtitle">NO COFFEE NO LIFE.</h2>
@@ -31,11 +31,35 @@
 
 <script>
 export default {
-  components: {}
+  data() {
+    return {
+      large: false
+    }
+  },
+  mounted() {
+    window.addEventListener('resize', this.handleResize)
+    this.handleResize()
+  },
+  destroyed() {
+    window.removeEventListener('resize', this.handleResize)
+  },
+  methods: {
+    handleResize() {
+      this.large = window.innerWidth >= 1200
+    }
+  }
 }
 </script>
 
 <style>
+.center-vertical {
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .title {
   font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
     'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
