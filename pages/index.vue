@@ -13,6 +13,9 @@
       </b-button>
       <div v-if="$store.state.auth.user" class="d-inline-flex flex-column">
         <p>Welcome back, {{ $store.state.auth.user.name }} !</p>
+        <b-button class="m-1" variant="outline-success" size="lg" to="menu">
+          Menu
+        </b-button>
         <b-button
           v-if="$store.state.auth.user"
           @click="logout"
@@ -61,7 +64,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 #chara {
   z-index: -1;
 }
