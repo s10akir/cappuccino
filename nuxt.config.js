@@ -47,8 +47,21 @@ module.exports = {
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
     // Doc: https://github.com/nuxt-community/dotenv-module
-    '@nuxtjs/dotenv'
+    '@nuxtjs/dotenv',
+    '@nuxtjs/auth'
   ],
+
+  /*
+   * nuxt auth-module configuration
+   */
+  auth: {
+    strategies: {
+      google: {
+        client_id: process.env.GOOGLE_CLIENT_ID
+      }
+    }
+  },
+
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
