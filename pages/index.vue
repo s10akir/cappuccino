@@ -3,18 +3,21 @@
     <b-container class="justify-content-center text-center">
       <h1 class="title">cappuccino</h1>
       <h2 class="subtitle">NO COFFEE NO LIFE.</h2>
+      <p v-if="$store.state.auth.user">
+        Welcome back, {{ $store.state.auth.user.name }} !
+      </p>
       <b-button
-        v-if="!$store.state.authUser"
+        v-if="!$store.state.auth.user"
+        @click="login"
         variant="outline-success"
-        href="/auth/slack"
         size="lg"
       >
         Login
       </b-button>
       <b-button
-        v-if="$store.state.authUser"
+        v-if="$store.state.auth.user"
+        @click="logout"
         variant="outline-danger"
-        href="/auth/logout"
         size="lg"
       >
         Logout
@@ -46,6 +49,12 @@ export default {
   methods: {
     handleResize() {
       this.large = window.innerWidth >= 1200
+    },
+    login() {
+      this.$auth.loginWith('google')
+    },
+    logout() {
+      this.$auth.logout()
     }
   }
 }

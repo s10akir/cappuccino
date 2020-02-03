@@ -54,7 +54,13 @@ module.exports = {
   /*
    * nuxt auth-module configuration
    */
-  auth: {},
+  auth: {
+    strategies: {
+      google: {
+        client_id: process.env.GOOGLE_CLIENT_ID
+      }
+    }
+  },
 
   /*
    ** Axios module configuration
