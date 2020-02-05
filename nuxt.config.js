@@ -58,11 +58,21 @@ module.exports = {
    * nuxt auth-module configuration
    */
   auth: {
+    redirect: {
+      login: '/',
+      logout: '/',
+      callback: '/login',
+      home: '/'
+    },
     strategies: {
       google: {
         client_id: process.env.GOOGLE_CLIENT_ID
       }
     }
+  },
+
+  router: {
+    middleware: ['auth']
   },
 
   /*
